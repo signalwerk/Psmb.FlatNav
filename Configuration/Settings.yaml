@@ -47,7 +47,7 @@ Neos:
             #   newReferenceNodePath: 'q(node).find("[instanceof Your.Namespace:NewsList]").first().get(0).path'
             #   newNodeType: 'Your.Namespace:Tag'
             #   disablePagination: false
-            ## Example using FlowQuery with search
+            ## Example using FlowQuery with search and selectNode when clicked on the node
             # tags:
             #   label: Tags
             #   icon: tag
@@ -57,6 +57,8 @@ Neos:
             #   searchQuery: 'q(node).find("[instanceof Your.Namespace:Tag][title*=\"" + searchTerm + "\"]").sort("title", "ASC").get()'
             #   newReferenceNodePath: 'q(node).find("[instanceof Your.Namespace:NewsList]").first().get(0).path'
             #   newNodeType: 'Your.Namespace:Tag'
+            #   selectNode: 'q(node).closest("[instanceof Neos.NodeTypes:Page]").parent().get(0)'
+            #   selectNodePath: 'uri + "&prod=" + identifier'
             #   disablePagination: false
 
   Flow:

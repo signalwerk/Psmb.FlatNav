@@ -83,6 +83,26 @@ class StandardController extends ActionController
             $nodeInfo = $nodeInfoHelper->renderNodeWithMinimalPropertiesAndChildrenInformation($node, $this->getControllerContext());
             $nodeInfo['properties']['_removed'] = $node->isRemoved();
             $nodeInfo['properties']['_hidden'] = $node->isHidden();
+            if (isset($this->presets[$preset]['selectNode'])) {
+                $expression = '${' . $this->presets[$preset]['selectNode'] . '}';
+                $contextVariables = [
+                    'node' => $node,
+                ];
+                $selectNode = Utility::evaluateEelExpression($expression, $this->eelEvaluator, $contextVariables, $this->defaultContextConfiguration);
+                $selectNodeInfo = $nodeInfoHelper->renderNodeWithMinimalPropertiesAndChildrenInformation($selectNode, $this->getControllerContext());
+
+                if (isset($this->presets[$preset]['selectNodePath'])) {
+                    $expression = '${' . $this->presets[$preset]['selectNodePath'] . '}';
+                    $contextVariables = [
+                        'uri' => $selectNodeInfo['uri'],
+                        'identifier' => $selectNodeInfo['identifier'],
+                    ];
+                    $finalUri = Utility::evaluateEelExpression($expression, $this->eelEvaluator, $contextVariables, $this->defaultContextConfiguration);
+                    $nodeInfo['uri'] = $finalUri;
+                } else {
+                    $nodeInfo['uri'] = $selectNodeInfo;
+                }
+            }
             $result[] = $nodeInfo;
         }
         $this->view->assign('value', $result);
