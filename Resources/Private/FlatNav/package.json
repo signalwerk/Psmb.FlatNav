@@ -6,7 +6,7 @@
     "watch": "neos-react-scripts watch"
   },
   "devDependencies": {
-    "@neos-project/neos-ui-extensibility": "*"
+    "@neos-project/neos-ui-extensibility": "^1.3.3"
   },
   "neos": {
     "buildTargetDirectory": "../../Public/JavaScript/FlatNav"
@@ -14,6 +14,7 @@
   "dependencies": {
     "@neos-project/eslint-config-neos": "^2.1.2",
     "lodash.debounce": "^4.0.8",
-    "lodash.upperfirst": "^4.3.1"
+    "lodash.upperfirst": "^4.3.1",
+    "webpack": "^3.12.0"
   }
 }
