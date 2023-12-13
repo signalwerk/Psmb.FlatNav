@@ -95,7 +95,7 @@ class StandardController extends ActionController
                     $expression = '${' . $this->presets[$preset]['selectNodePath'] . '}';
                     $contextVariables = [
                         'uri' => $selectNodeInfo['uri'],
-                        'identifier' => $selectNodeInfo['identifier'],
+                        'identifier' => $nodeInfo['identifier'],
                     ];
                     $finalUri = Utility::evaluateEelExpression($expression, $this->eelEvaluator, $contextVariables, $this->defaultContextConfiguration);
                     $nodeInfo['uri'] = $finalUri;

@@ -43,7 +43,7 @@ import SearchInput from "./SearchInput";
     }
 , {
     setSrc: actions.UI.ContentCanvas.setSrc,
-    focus: actions.UI.PageTree.focus,
+    focus: actions.CR.Nodes.focus,
     openNodeCreationDialog: actions.UI.NodeCreationDialog.open,
     commenceNodeCreation: actions.CR.Nodes.commenceCreation,
     selectNodeType: actions.UI.SelectNodeTypeModal.apply,
